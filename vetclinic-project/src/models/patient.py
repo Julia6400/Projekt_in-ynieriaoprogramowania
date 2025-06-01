@@ -1,9 +1,20 @@
 class Patient:
     """
-    Klasa reprezentująca pacjenta w gabinecie weterynaryjnym.
+    Klasa reprezentująca pacjenta w klinice weterynaryjnej.
     """
 
-    def __init__(self, name: str, species: str, breed: str, age: int, owner_name: str) -> None:
+    def __init__(self, patient_id: int, name: str, species: str, breed: str, age: int, owner_name: str) -> None:
+        """
+        Inicjalizuje nowego pacjenta.
+
+        :param patient_id: unikalny identyfikator pacjenta
+        :param name: imię zwierzęcia
+        :param species: gatunek (np. pies, kot)
+        :param breed: rasa
+        :param age: wiek w latach
+        :param owner_name: imię i nazwisko właściciela
+        """
+        self.patient_id = patient_id
         self.name = name
         self.species = species
         self.breed = breed

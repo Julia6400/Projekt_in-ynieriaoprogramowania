@@ -1,19 +1,17 @@
-import sys
-import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-from src.models.patient import Patient
 import unittest
+from models.patient import Patient
 
 class TestPatient(unittest.TestCase):
-    def test_patient_initialization(self):
-        patient = Patient("Reksio", "pies", "beagle", 4, "Anna Kowalska")
-        self.assertEqual(patient.name, "Reksio")
+    def setUp(self):
+        self.patient = Patient(1, "Reksio", "pies", "beagle", 4, "Anna Kowalska")
 
-    def test_patient_str(self):
-        patient = Patient("Reksio", "pies", "beagle", 4, "Anna Kowalska")
+    def test_initialization(self):
+        self.assertEqual(self.patient.name, "Reksio")
+        self.assertEqual(self.patient.species, "pies")
+        self.assertEqual(self.patient.breed, "beagle")
+        self.assertEqual(self.patient.age, 4)
+        self.assertEqual(self.patient.owner_name, "Anna Kowalska")
+
+    def test_str_representation(self):
         expected = "Reksio (pies, beagle), 4 lat – Właściciel: Anna Kowalska"
-        self.assertEqual(str(patient), expected)
-
-if __name__ == "__main__":
-    unittest.main()
+        self.assertEqual(str(self.patient), expected)

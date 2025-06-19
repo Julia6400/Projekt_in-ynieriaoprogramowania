@@ -22,5 +22,15 @@ class TestService(unittest.TestCase):
         expected = "2 (Badanie, Diagnostyka, Kot) – koszt: 150.50 zł"
         self.assertEqual(str(service), expected)
 
+    def test_service_negative_price(self):
+        with self.assertRaises(ValueError):
+            Service(
+                service_id=3,
+                name="Konsultacja",
+                category="Porada",
+                species="Pies",
+                price=-50.00
+            )
+
 if __name__ == "__main__":
     unittest.main()

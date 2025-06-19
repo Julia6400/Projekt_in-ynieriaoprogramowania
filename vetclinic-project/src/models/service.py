@@ -12,6 +12,8 @@ class Service:
     """
 
     def __init__(self, service_id: int, name: str, category: str, species: str, price: float) -> None:
+        if price < 0:
+            raise ValueError("Cena usługi nie może być ujemna")
 
         self.service_id = service_id
         self.name = name
